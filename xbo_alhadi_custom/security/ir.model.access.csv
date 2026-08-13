@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_color_color,color.color,model_color_color,base.group_user,1,1,1,1
+access_size_size,size.size,model_size_size,base.group_user,1,1,1,1
