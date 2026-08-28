@@ -6,8 +6,8 @@ from odoo import api, fields, models, _
 class PurchaseOrderInherit(models.Model):
     _inherit = 'purchase.order'
 
-    partner_current_balance = fields.Monetary(string="Current Balance", compute='_compute_partner_current_balance')
-    product_catg_id = fields.Many2one(comodel_name='product.category', string="Product Category")
+    # partner_current_balance = fields.Monetary(string="Current Balance", compute='_compute_partner_current_balance')
+    # product_catg_id = fields.Many2one(comodel_name='product.category', string="Product Category")
 
     total_before_dis = fields.Float(
         string="Total Before Discount",
@@ -20,6 +20,15 @@ class PurchaseOrderInherit(models.Model):
         compute="_compute_total_discount",
         store=True,
     )
+    allowed_partner_ids = fields.Many2many(
+        'res.partner',
+        compute='_compute_allowed_partners'
+    )
+
+    def _compute_allowed_partners(self):
+        for rec in self:
+            partner_obj = self.env['res.partner'].search([('partner_type', '=', 'supplier')])
+            rec.allowed_partner_ids = partner_obj.ids
 
     @api.depends('order_line.discount_amount')
     def _compute_total_discount(self):
@@ -39,16 +48,16 @@ class PurchaseOrderInherit(models.Model):
 
     """COMPUTE PARTNER CURRENT BALANCE"""
 
-    @api.depends('partner_id')
-    def _compute_partner_current_balance(self):
-        for rec in self:
-            if rec.partner_id:
-                rec.partner_current_balance = rec.partner_id.credit - rec.partner_id.debit
-            else:
-                rec.partner_current_balance = False
-
-    def _prepare_invoice(self):
-        invoice_vals = super(PurchaseOrderInherit, self)._prepare_invoice()
-        invoice_vals['product_catg_id'] = self.product_catg_id.id
-
-        return invoice_vals
+    # @api.depends('partner_id')
+    # def _compute_partner_current_balance(self):
+    #     for rec in self:
+    #         if rec.partner_id:
+    #             rec.partner_current_balance = rec.partner_id.credit - rec.partner_id.debit
+    #         else:
+    #             rec.partner_current_balance = False
+    #
+    # def _prepare_invoice(self):
+    #     invoice_vals = super(PurchaseOrderInherit, self)._prepare_invoice()
+    #     invoice_vals['product_catg_id'] = self.product_catg_id.id
+    #
+    #     return invoice_vals

@@ -9,43 +9,43 @@ class PurchaseOrderLine(models.Model):
 
     discount_amount = fields.Float(string='Disc Amount')
     discount = fields.Float( string="Discount (%)", digits=(16, 6), default=0.0 )
-    sale_price = fields.Float(
-        string='Sale Price',
-        related='product_id.lst_price',
-        store=True,
-        readonly=True
-    )
+    # sale_price = fields.Float(
+    #     string='Sale Price',
+    #     related='product_id.lst_price',
+    #     store=True,
+    #     readonly=True
+    # )
     sr_no = fields.Integer(
         string='Sr#',
         compute='_compute_sr_no',
         store=False
     )
 
-    item_code = fields.Char(
-        string='Item Code',
-        related='product_id.barcode',
-        store=True,
-        readonly=True
-    )
+    # item_code = fields.Char(
+    #     string='Item Code',
+    #     related='product_id.barcode',
+    #     store=True,
+    #     readonly=True
+    # )
 
-    custom_unit_price = fields.Float(string="Unit Price")
+    # custom_unit_price = fields.Float(string="Unit Price")
 
-    @api.onchange('product_id', 'product_uom_id')
-    def _onchange_product_id_custom(self):
-        for line in self:
-            if line.product_id:
-                product = line.product_id
-                template = product.product_tmpl_id
-
-                line.name = " - ".join(filter(None, [
-                    template.brand_id.name if template.brand_id else "",
-                    template.color_id.name if template.color_id else "",
-                    template.size_id.name if template.size_id else "",
-
-                    template.seasons_id.name if template.seasons_id else "",
-                ]))
-
-                line.custom_unit_price = product.standard_price
+    # @api.onchange('product_id', 'product_uom_id')
+    # def _onchange_product_id_custom(self):
+    #     for line in self:
+    #         if line.product_id:
+    #             product = line.product_id
+    #             template = product.product_tmpl_id
+    #
+    #             line.name = " - ".join(filter(None, [
+    #                 template.brand_id.name if template.brand_id else "",
+    #                 template.color_id.name if template.color_id else "",
+    #                 template.size_id.name if template.size_id else "",
+    #
+    #                 template.seasons_id.name if template.seasons_id else "",
+    #             ]))
+    #
+    #             line.custom_unit_price = product.standard_price
 
     @api.depends('order_id.order_line')
     def _compute_sr_no(self):

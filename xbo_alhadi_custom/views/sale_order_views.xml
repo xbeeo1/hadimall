@@ -7,59 +7,65 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-<!--                <xpath expr="//field[@name='user_id']" position="replace">-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='payment_term_id']" position="after">-->
-<!--                    <field name="customer_credit_limit"/>-->
-<!--                    <field name="partner_current_balance"/>-->
-<!--                    <field name="start_date_time"/>-->
-<!--                    <field name="end_date_time"/>-->
-<!--                    <field name="user_id"/>-->
-<!--                    <field name="salesmen_id"/>-->
-<!--                    <field name="checker_id"/>-->
-<!--                    <field name="packer_id"/>-->
-<!--                </xpath>-->
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="allowed_partner_ids" invisble="1"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('id','in',allowed_partner_ids)]</attribute>
+                </xpath>
+                <!--                <xpath expr="//field[@name='user_id']" position="replace">-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='payment_term_id']" position="after">-->
+                <!--                    <field name="customer_credit_limit"/>-->
+                <!--                    <field name="partner_current_balance"/>-->
+                <!--                    <field name="start_date_time"/>-->
+                <!--                    <field name="end_date_time"/>-->
+                <!--                    <field name="user_id"/>-->
+                <!--                    <field name="salesmen_id"/>-->
+                <!--                    <field name="checker_id"/>-->
+                <!--                    <field name="packer_id"/>-->
+                <!--                </xpath>-->
 
-<!--                <xpath expr="//field[@name='user_id']" position="attributes">-->
-<!--                    <attribute name="string">Operator</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='user_id']" position="attributes">-->
+                <!--                    <attribute name="string">Operator</attribute>-->
+                <!--                </xpath>-->
 
-<!--                <xpath expr="//field[@name='partner_shipping_id']" position="after">-->
-<!--                    <field name="partner_phone" />-->
-<!--                    <field name="ref_by"/>-->
-<!--                    <field name="no_of_ctn" />-->
-<!--                    <field name="no_of_bags" />-->
-<!--                    <field name="party_type_id" />-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_id']" position="replace">-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_qty']" position="attributes">-->
-<!--                    <attribute name="sum">Total</attribute>-->
-<!--                    <attribute name="string">Bundle</attribute>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_qty']" position="after">-->
-<!--                    <field name="product_uom_id"/>-->
-<!--                    <field name="total_pcs"/>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='price_unit']" position="before">-->
-<!--                    <field name="custom_unit_price" />-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='price_unit']" position="attributes">-->
-<!--                    <attribute name="string">PKT Price</attribute>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_id']" position="attributes">-->
-<!--                    <attribute name="string">PCS</attribute>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list" position="inside">-->
-<!--                    <field name="allowed_product_ids" column_invisible="1"/>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_template_id']" position="attributes">-->
-<!--                    <attribute name="domain">[('product_variant_ids', 'in', allowed_product_ids)]</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='partner_shipping_id']" position="after">-->
+                <!--                    <field name="partner_phone" />-->
+                <!--                    <field name="ref_by"/>-->
+                <!--                    <field name="no_of_ctn" />-->
+                <!--                    <field name="no_of_bags" />-->
+                <!--                    <field name="party_type_id" />-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_id']" position="replace">-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_qty']" position="attributes">-->
+                <!--                    <attribute name="sum">Total</attribute>-->
+                <!--                    <attribute name="string">Bundle</attribute>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_qty']" position="after">-->
+                <!--                    <field name="product_uom_id"/>-->
+                <!--                    <field name="total_pcs"/>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='price_unit']" position="before">-->
+                <!--                    <field name="custom_unit_price" />-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='price_unit']" position="attributes">-->
+                <!--                    <attribute name="string">PKT Price</attribute>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_uom_id']" position="attributes">-->
+                <!--                    <attribute name="string">PCS</attribute>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list" position="inside">-->
+                <!--                    <field name="allowed_product_ids" column_invisible="1"/>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='product_template_id']" position="attributes">-->
+                <!--                    <attribute name="domain">[('product_variant_ids', 'in', allowed_product_ids)]</attribute>-->
+                <!--                </xpath>-->
 
                 <xpath expr="//field[@name='order_line']/list//field[@name='product_template_id']" position="before">
                     <field name="sr_no"/>
-<!--                    <field name="item_code"/>-->
+                    <!--                    <field name="item_code"/>-->
                 </xpath>
                 <xpath expr="//field[@name='order_line']/list" position="inside">
                     <field name="can_edit_discount" column_invisible="1"/>
@@ -67,9 +73,9 @@
                 <xpath expr="//field[@name='order_line']/list//field[@name='price_subtotal']" position="before">
                     <field name="discount_amount"/>
                 </xpath>
-<!--                <xpath expr="//field[@name='order_line']/list//field[@name='discount']" position="attributes">-->
-<!--                    <attribute name="readonly">not can_edit_discount</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='order_line']/list//field[@name='discount']" position="attributes">-->
+                <!--                    <attribute name="readonly">not can_edit_discount</attribute>-->
+                <!--                </xpath>-->
 
                 <xpath expr="//field[@name='tax_totals']" position="before">
                     <group class="oe_subtotal_footer">

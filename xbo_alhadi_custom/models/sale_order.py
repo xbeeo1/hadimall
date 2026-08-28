@@ -16,6 +16,16 @@ class SaleOrderInherit(models.Model):
         compute="_compute_total_discount",
         store=True,
     )
+    allowed_partner_ids = fields.Many2many(
+        'res.partner',
+        compute='_compute_allowed_partners'
+    )
+
+    def _compute_allowed_partners(self):
+        for rec in self:
+            partner_obj= self.env['res.partner'].search([('partner_type', '=', 'customer')])
+            rec.allowed_partner_ids = partner_obj.ids
+
     # type_of_packing = fields.Selection([('shoping_bag','Shopping Bag'),('ctn','CTN')], string="Type of Packing")
     # no_of_bags = fields.Integer(string="No of Bags")
     # no_of_ctn = fields.Integer(string="No of CTN")
