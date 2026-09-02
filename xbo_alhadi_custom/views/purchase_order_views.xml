@@ -13,7 +13,7 @@
             <!--                <attribute name="domain">[('categ_id', '=', parent.product_catg_id)]</attribute>-->
             <!--            </xpath>-->
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="allowed_partner_ids" invisble="1"/>
+                <field name="allowed_partner_ids" invisible="1"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="domain">[('id','in',allowed_partner_ids)]</attribute>
