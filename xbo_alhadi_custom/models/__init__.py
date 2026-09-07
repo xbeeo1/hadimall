@@ -22,6 +22,7 @@ from . import product_pricelist_item
 # from . import product_uom
 # from . import stock_move_line
 # from . import hr_expense
+from . import account_journal
 
 
 

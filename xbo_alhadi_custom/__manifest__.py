@@ -35,6 +35,7 @@
         # 'views/seasons_seasons_views.xml',
         'views/product_pricelist_item_views.xml',
         'views/size_size_views.xml',
+        'views/account_journal_view.xml',
         # 'views/res_users_views.xml',
     ],
 
