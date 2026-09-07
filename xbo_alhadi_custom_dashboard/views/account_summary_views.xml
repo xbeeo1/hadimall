@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_accounts_summary" model="ir.actions.client">
+        <field name="name">Accounts Summary</field>
+        <field name="tag">accounts_summary_action</field>
+    </record>
+
+    <menuitem
+        id="menu_accounts_summary"
+        name="Accounts Summary"
+        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        action="action_accounts_summary"
+        sequence="23"/>
+
+</odoo>

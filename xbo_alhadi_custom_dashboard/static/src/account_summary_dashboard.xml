@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="xbo_alhadi_custom_dashboard.AccountSummary">
+
+        <div class="container-fluid account-summary-dashboard py-3">
+
+            <!-- ===================================================== -->
+            <!-- Premium Header -->
+            <!-- ===================================================== -->
+
+            <div class="account-summary-topbar mb-4">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                    <div>
+                        <div class="account-summary-eyebrow">
+                            FINANCIAL OVERVIEW
+                        </div>
+
+                        <h2 class="account-summary-title mb-1">
+                            Account Summary
+                        </h2>
+
+                        <div class="account-summary-subtitle">
+                            Monitor your receivables, payables and expenses
+                        </div>
+                    </div>
+
+
+                    <!-- Filters -->
+                    <div class="account-summary-filters">
+
+                        <!-- Partner -->
+                        <div class="summary-filter search-filter">
+
+                            <span class="summary-filter-icon">
+                                <i class="fa fa-search"/>
+                            </span>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search Partner..."
+                                t-model="state.partner_search"
+                                t-on-keydown="onPartnerKeydown"
+                            />
+
+                            <button
+                                class="filter-search-btn"
+                                t-on-click="onPartnerSearch"
+                                title="Search"
+                            >
+                                <i class="fa fa-arrow-right"/>
+                            </button>
+
+                        </div>
+
+
+                        <!-- From -->
+                        <div class="summary-filter date-filter">
+
+                            <span class="summary-filter-icon">
+                                <i class="fa fa-calendar"/>
+                            </span>
+
+                            <div>
+                                <span class="date-label">
+                                    FROM
+                                </span>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    t-model="state.date_from"
+                                    t-on-change="onDateChange"
+                                />
+                            </div>
+
+                        </div>
+
+
+                        <!-- To -->
+                        <div class="summary-filter date-filter">
+
+                            <span class="summary-filter-icon">
+                                <i class="fa fa-calendar"/>
+                            </span>
+
+                            <div>
+                                <span class="date-label">
+                                    TO
+                                </span>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    t-model="state.date_to"
+                                    t-on-change="onDateChange"
+                                />
+                            </div>
+
+                        </div>
+
+
+                        <!-- Refresh -->
+                        <button
+                            class="summary-refresh-btn"
+                            t-on-click="onRefresh"
+                            title="Refresh Dashboard"
+                        >
+                            <i class="fa fa-refresh"/>
+                            <span>Refresh</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- Financial Cards -->
+            <!-- ===================================================== -->
+
+            <div class="row g-3">
+
+
+                <!-- ================================================= -->
+                <!-- Receivable -->
+                <!-- ================================================= -->
+
+                <div class="col-12 col-md-4">
+
+                    <div class="financial-card receivable-card">
+
+                        <div class="financial-card-glow"/>
+
+                        <div class="financial-card-header">
+
+                            <div class="financial-icon">
+                                <i class="fa fa-arrow-down"/>
+                            </div>
+
+                            <div class="financial-card-label">
+                                <span>RECEIVABLE</span>
+                                <small>Money coming in</small>
+                            </div>
+
+                            <div class="financial-card-menu">
+                                <i class="fa fa-ellipsis-h"/>
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-body">
+
+                            <div class="financial-amount">
+                                <t t-esc="formatAmount(state.receivable)"/>
+                            </div>
+
+                            <div class="financial-status">
+                                <span class="status-dot"/>
+                                Outstanding receivables
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-line"/>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- Payable -->
+                <!-- ================================================= -->
+
+                <div class="col-12 col-md-4">
+
+                    <div class="financial-card payable-card">
+
+                        <div class="financial-card-glow"/>
+
+                        <div class="financial-card-header">
+
+                            <div class="financial-icon">
+                                <i class="fa fa-arrow-up"/>
+                            </div>
+
+                            <div class="financial-card-label">
+                                <span>PAYABLE</span>
+                                <small>Money going out</small>
+                            </div>
+
+                            <div class="financial-card-menu">
+                                <i class="fa fa-ellipsis-h"/>
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-body">
+
+                            <div class="financial-amount">
+                                <t t-esc="formatAmount(state.payable)"/>
+                            </div>
+
+                            <div class="financial-status">
+                                <span class="status-dot"/>
+                                Outstanding payables
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-line"/>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- Expense -->
+                <!-- ================================================= -->
+
+                <div class="col-12 col-md-4">
+
+                    <div class="financial-card expense-card">
+
+                        <div class="financial-card-glow"/>
+
+                        <div class="financial-card-header">
+
+                            <div class="financial-icon">
+                                <i class="fa fa-credit-card"/>
+                            </div>
+
+                            <div class="financial-card-label">
+                                <span>EXPENSE</span>
+                                <small>Total expenses</small>
+                            </div>
+
+                            <div class="financial-card-menu">
+                                <i class="fa fa-ellipsis-h"/>
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-body">
+
+                            <div class="financial-amount">
+                                <t t-esc="formatAmount(state.expense)"/>
+                            </div>
+
+                            <div class="financial-status">
+                                <span class="status-dot"/>
+                                Recorded expenses
+                            </div>
+
+                        </div>
+
+
+                        <div class="financial-card-line"/>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </t>
+
+</templates>

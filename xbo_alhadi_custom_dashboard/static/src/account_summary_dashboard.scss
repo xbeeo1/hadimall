@@ -1,0 +1,467 @@
+/* ============================================================= */
+/* Account Summary Dashboard                                    */
+/* ============================================================= */
+
+.account-summary-dashboard {
+    background: #f7f9fc;
+    min-height: 100%;
+}
+
+
+/* ============================================================= */
+/* Header                                                        */
+/* ============================================================= */
+
+.account-summary-topbar {
+    background: #ffffff;
+    border: 1px solid #e8edf3;
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 18px rgba(31, 41, 55, 0.04);
+}
+
+.account-summary-eyebrow {
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    margin-bottom: 4px;
+}
+
+.account-summary-title {
+    color: #111827;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.account-summary-subtitle {
+    color: #8a94a6;
+    font-size: 13px;
+}
+
+
+/* ============================================================= */
+/* Filter Bar                                                    */
+/* ============================================================= */
+
+.account-summary-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.summary-filter {
+    height: 43px;
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e5eaf0;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.summary-filter:focus-within {
+    border-color: #714b67;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.08);
+}
+
+.search-filter {
+    width: 220px;
+    padding-left: 11px;
+}
+
+.summary-filter-icon {
+    color: #9aa4b2;
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.summary-filter input {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    font-size: 13px;
+    color: #374151;
+}
+
+.search-filter input {
+    padding-left: 0;
+}
+
+.filter-search-btn {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    border: 0;
+    border-radius: 7px;
+    background: #714b67;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-search-btn:hover {
+    background: #5d3d55;
+    transform: translateX(1px);
+}
+
+
+/* ============================================================= */
+/* Date Filters                                                  */
+/* ============================================================= */
+
+.date-filter {
+    width: 145px;
+    padding: 0 10px;
+}
+
+.date-filter > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.date-filter input {
+    height: 19px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.date-label {
+    color: #9ca3af;
+    font-size: 8px;
+    line-height: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+
+/* ============================================================= */
+/* Refresh Button                                                */
+/* ============================================================= */
+
+.summary-refresh-btn {
+    height: 43px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 10px;
+    background: #714b67;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(113, 75, 103, 0.18);
+}
+
+.summary-refresh-btn:hover {
+    background: #5d3d55;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(113, 75, 103, 0.22);
+}
+
+.summary-refresh-btn i {
+    font-size: 12px;
+}
+
+
+/* ============================================================= */
+/* Financial Cards                                               */
+/* ============================================================= */
+
+.financial-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 178px;
+    padding: 20px 21px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(31, 41, 55, 0.06);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.financial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(31, 41, 55, 0.10);
+}
+
+
+/* ============================================================= */
+/* Card Header                                                   */
+/* ============================================================= */
+
+.financial-card-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+
+.financial-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    margin-right: 12px;
+}
+
+.financial-card-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.financial-card-label span {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.financial-card-label small {
+    margin-top: 2px;
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.financial-card-menu {
+    margin-left: auto;
+    color: #b4bcc8;
+    font-size: 15px;
+}
+
+
+/* ============================================================= */
+/* Card Body                                                     */
+/* ============================================================= */
+
+.financial-card-body {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+.financial-amount {
+    color: #111827;
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+}
+
+.financial-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 9px;
+    color: #8b95a5;
+    font-size: 11px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+
+/* ============================================================= */
+/* Bottom Accent                                                 */
+/* ============================================================= */
+
+.financial-card-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+}
+
+
+/* ============================================================= */
+/* Receivable                                                    */
+/* ============================================================= */
+
+.receivable-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f7fbff 100%
+    );
+    border-color: #dcecff;
+}
+
+.receivable-card .financial-icon {
+    background: #e7f2ff;
+    color: #3b82f6;
+}
+
+.receivable-card .financial-card-label span {
+    color: #2563eb;
+}
+
+.receivable-card .status-dot {
+    background: #3b82f6;
+}
+
+.receivable-card .financial-card-line {
+    background: #3b82f6;
+}
+
+.receivable-card .financial-card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -45px;
+    top: -55px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.07);
+}
+
+
+/* ============================================================= */
+/* Payable                                                       */
+/* ============================================================= */
+
+.payable-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #fffaf5 100%
+    );
+    border-color: #f6e4d3;
+}
+
+.payable-card .financial-icon {
+    background: #fff0df;
+    color: #f59e0b;
+}
+
+.payable-card .financial-card-label span {
+    color: #d97706;
+}
+
+.payable-card .status-dot {
+    background: #f59e0b;
+}
+
+.payable-card .financial-card-line {
+    background: #f59e0b;
+}
+
+.payable-card .financial-card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -45px;
+    top: -55px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.07);
+}
+
+
+/* ============================================================= */
+/* Expense                                                       */
+/* ============================================================= */
+
+.expense-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #fff8f8 100%
+    );
+    border-color: #f4dddd;
+}
+
+.expense-card .financial-icon {
+    background: #ffe9e9;
+    color: #ef4444;
+}
+
+.expense-card .financial-card-label span {
+    color: #dc2626;
+}
+
+.expense-card .status-dot {
+    background: #ef4444;
+}
+
+.expense-card .financial-card-line {
+    background: #ef4444;
+}
+
+.expense-card .financial-card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -45px;
+    top: -55px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.07);
+}
+
+
+/* ============================================================= */
+/* Responsive                                                    */
+/* ============================================================= */
+
+@media (max-width: 1200px) {
+
+    .account-summary-filters {
+        width: 100%;
+    }
+
+    .search-filter {
+        flex: 1;
+        min-width: 190px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .account-summary-topbar {
+        padding: 18px;
+    }
+
+    .account-summary-filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .search-filter {
+        width: 100%;
+        grid-column: span 2;
+    }
+
+    .date-filter {
+        width: 100%;
+    }
+
+    .summary-refresh-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .financial-card {
+        min-height: 165px;
+    }
+
+    .financial-amount {
+        font-size: 28px;
+    }
+
+}

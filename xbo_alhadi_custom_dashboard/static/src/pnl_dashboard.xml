@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+  <t t-name="xbo_alhadi_custom_dashboard.PnlDashboard">
+    <div class="pnl-dashboard p-4">
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <h2 class="mb-0">
+          <t t-esc="state.company"/> — Profit &amp; Loss
+        </h2>
+        <div class="d-flex align-items-center gap-2">
+          <label class="mb-0">From</label>
+          <input type="date" class="form-control form-control-sm"
+                 t-model="state.dateFrom" t-on-change="onDateChange"/>
+          <label class="mb-0">To</label>
+          <input type="date" class="form-control form-control-sm"
+                 t-model="state.dateTo" t-on-change="onDateChange"/>
+          <button class="btn btn-sm btn-primary" t-on-click="onRefresh">
+            Refresh
+          </button>
+        </div>
+      </div>
+
+      <div t-if="state.loading" class="text-muted">Loading...</div>
+
+      <div t-elif="state.error" class="alert alert-warning" role="alert">
+        <t t-esc="state.error"/>
+      </div>
+
+      <table t-else="" class="table table-sm pnl-table">
+        <tbody>
+          <t t-foreach="state.lines" t-as="line" t-key="line.id">
+            <tr t-att-class="line.is_total ? 'fw-bold border-top pnl-total' : ''">
+              <td t-attf-style="padding-left: {{line.level * 16}}px">
+                <t t-esc="line.name"/>
+              </td>
+              <t t-foreach="line.columns" t-as="col" t-key="col_index">
+                <td class="text-end">
+                  <t t-esc="col.name"/>
+                  <t t-esc="state.currency"/>
+                </td>
+              </t>
+            </tr>
+          </t>
+        </tbody>
+      </table>
+    </div>
+  </t>
+</templates>

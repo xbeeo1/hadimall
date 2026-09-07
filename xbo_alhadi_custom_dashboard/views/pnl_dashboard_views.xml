@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_pnl_dashboard" model="ir.actions.client">
+        <field name="name">Profit &amp; Loss</field>
+        <field name="tag">pnl_dashboard_action</field>
+    </record>
+    <menuitem id="menu_pnl_dashboard"
+              name="Profit &amp; Loss"
+              action="action_pnl_dashboard"
+              parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+              sequence="15"/>
+
+
+
+<!--    <record id="view_report_pos_order_vendor_pivot" model="ir.ui.view">-->
+<!--    <field name="name">report.pos.order.vendor.pivot</field>-->
+<!--    <field name="model">report.pos.order</field>-->
+<!--    <field name="arch" type="xml">-->
+<!--            <pivot string="Top Vendors">-->
+<!--                <field name="vendor_id" type="row"/>-->
+<!--                <field name="product_qty" type="measure"/>-->
+<!--                <field name="price_total" type="measure"/>-->
+<!--            </pivot>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="action_top_vendors" model="ir.actions.act_window">-->
+<!--        <field name="name">Top Vendors</field>-->
+<!--        <field name="res_model">report.pos.order</field>-->
+<!--        <field name="view_mode">pivot,graph</field>-->
+<!--        <field name="view_id" ref="view_report_pos_order_vendor_pivot"/>-->
+<!--        <field name="domain">[('state', 'in', ['paid', 'done', 'invoiced']), ('vendor_id', '!=', False)]</field>-->
+<!--    </record>-->
+
+
+<!--    <menuitem-->
+<!--        id="menu_top_vendors"-->
+<!--        name="Top Vendors"-->
+<!--        parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"-->
+<!--        action="action_top_vendors"-->
+<!--        sequence="20"-->
+<!--    />-->
+</odoo>
