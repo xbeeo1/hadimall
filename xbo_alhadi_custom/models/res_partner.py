@@ -22,6 +22,13 @@ class ResPartnerInherit(models.Model):
         string='Partner Type',
     )
 
+    @api.onchange('partner_type')
+    def _onchange_partner_type(self):
+        if self.partner_type == 'supplier':
+            self.supplier_rank = 1
+        elif self.partner_type == 'customer':
+            self.customer_rank = 1
+
     # @api.depends("party_type_id")
     # def _compute_is_credit(self):
     #     for rec in self:
